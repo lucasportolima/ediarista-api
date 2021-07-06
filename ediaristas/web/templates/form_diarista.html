@@ -1,0 +1,36 @@
+<title>Formulário</title>
+
+<!-- Herda o arquivo base -->
+{% extends 'base.html' %}
+
+<!-- Carrega pacote crispy para estilizar formulário -->
+{% load crispy_forms_tags %}
+
+<!-- Indica o que deve ser enviado para o block conteudo -->
+ {% block conteudo %}
+
+    <h1 style="margin: 32px 0">{{tipo_form}} Diarista</h1>
+
+    <!--
+    Definição de td o formulário -> sem action, pois a action sempre será o método definido da view que está
+    chamando o formulário
+    "enctype="multipart/form-data"" -> indica que o formulário aceitará arquivos
+    -->
+    <form method="post" enctype="multipart/form-data">
+        <!--
+        Deve-se incluir esse token, pois o django só aceita que dados sejam enviados ao banco de dados quando o
+        formulário é identificado -> possui o token
+        -->
+        {% csrf_token %}
+
+        <!--
+        Indica que a instância do form_diarista configurada em "web/views.py" será exibida como um parágrafo.
+        "|crispy" -> estilização com pacote
+        -->
+        {{form_diarista|crispy}}
+
+        <!-- Botão para submeter dados do formulário -->
+        <button type="submit" class="btn btn-primary mt-3">{{tipo_form}}</button>
+    </form>
+
+{% endblock conteudo %}

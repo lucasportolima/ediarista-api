@@ -1,0 +1,50 @@
+<title>Listagem de Diaristas</title>
+
+<!-- Herda o arquivo base -->
+{% extends 'base.html' %}
+
+<!-- Carrega pacote -->
+{% load easy_mask %}
+
+<!-- Indica o que deve ser enviado para o block conteudo -->
+ {% block conteudo %}
+    <h1 style="margin: 32px 0">Lista de Diaristas</h1>
+
+    <!-- Tabela para exibir diaristas -->
+    <table class="table">
+
+        <!-- Cabeçalho da tabela com id, nome, email, cep e ações que serão adicionadas -->
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>CEP</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <!-- Corpo da tabela, onde serão exibidos os dados das diaristas -->
+        <tbody>
+            <!-- Estrutura de repetição para iterar pelos dados obtidos do banco -->
+            {% for diarista in diaristas %}
+                <tr style="vertical-align: middle">
+                    <td>{{diarista.id}}</td>
+                    <td>{{diarista.nome_completo}}</td>
+                    <td>{{diarista.email}}</td>
+                    <!-- O "| cep" adiciona a máscara -->
+                    <td>{{diarista.cep | cep}}</td>
+                    <td>
+                        <!-- Link para rota de editar diarista passando o id da diarista -->
+                        <a href="{% url 'editar_diarista' diarista.id %}" class="btn btn-secondary">Editar</a>
+                        <a href="{% url 'remover_diarista' diarista.id %}" class="btn btn-danger">Remover</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Botão para cadastrar nova diarista -->
+    <a href="{% url 'cadastrar_diarista' %}" class="btn btn-primary mt-2">Cadastrar nova Diarista</a>
+
+{% endblock conteudo %}
