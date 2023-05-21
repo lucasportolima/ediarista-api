@@ -26,5 +26,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     # Indica que as rotas do arquivo urls da aplicação web serão utilizadas com 'web/' antes da rota
-    path('web/', include('web.urls'))
+    path('administracao/', include('administracao.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
