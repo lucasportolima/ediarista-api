@@ -135,6 +135,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+LOGIN_REDIRECT_URL = 'listar_servicos'
+LOGOUT_REDIRECT_URL = 'logar_usuario'
+LOGIN_URL = 'logar_usuario'
+
 # Define onde os arquivos de imagens serão armazenados
     # os.path.join -> pega diretório raíz e passa o diretório padrão do projeto(BASE_DIR) e define que serão
     # armazenados na pasta 'media'

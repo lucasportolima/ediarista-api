@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import widgets
-from .models import Service
+from ..models import Service
 from decimal import Decimal
 
 class ServiceForm(forms.ModelForm):
