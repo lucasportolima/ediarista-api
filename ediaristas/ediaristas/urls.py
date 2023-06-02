@@ -27,4 +27,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # Indica que as rotas do arquivo urls da aplicação web serão utilizadas com 'web/' antes da rota
     path('administracao/', include('administracao.urls')),
+    path('api/', include('api.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
