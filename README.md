@@ -28,3 +28,6 @@ DATABASES = {
 #### Iniciar o servidor
 `python manage.py runserver`
 
+
+TODO: Faltando a documentação da api
+
